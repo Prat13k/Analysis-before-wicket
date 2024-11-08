@@ -1,2 +1,2 @@
-# Herculus-App
-Single page meteor app 
+# Herculus
+A simple blog
