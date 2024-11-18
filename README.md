@@ -1,2 +1,2 @@
-# Herculus
-A simple blog
+# Cricktic
+A cricket analytics blog.
