@@ -13,13 +13,22 @@ def main():
     return render_template("main.html", blog_details = blog_details)
 
 @app.route('/subscribe',methods = ['POST'])
+
 def subscribe(): 
     email = request.form['email']
     db = get_db_connection()
     cursor = db.cursor()
-    cursor.execute('INSERT INTO subscriber_email values($s)',(email,))
-    db.commit()
-    db.close()
+    try:
+        cursor.execute('INSERT INTO subscriber_email values($s)',(email,))
+        db.commit()
+        db.close()
+
+    except Exception as e:
+        print(f'Error: {e}')
+        
+    finally:
+        db.close() 
+         
     return redirect(url_for('main'))
     
 if __name__ == '__main__':

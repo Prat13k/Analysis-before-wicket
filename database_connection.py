@@ -1,9 +1,7 @@
 import mysql.connector
-
 def get_db_connection():
     return mysql.connector.connect(
-        host = '127.0.0.1',
+        host = 'localhost',
         user = 'root',
-        password = 'Pratik@99.?!',
-        database = 'analysis-before-wicket'
-        )
+        password = 'Pratik@99.13?!',
+        database = 'analysis_before_wicket')
