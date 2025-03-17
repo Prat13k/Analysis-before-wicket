@@ -12,8 +12,11 @@ def main():
     db.close()
     return render_template("main.html", blog_details = blog_details)
 
-@app.route('/subscribe',methods = ['POST'])
+@app.route('/about-us')
+def about():
+    return render_template("aboutus.html", blog_details = blog_details)
 
+@app.route('/subscribe',methods = ['POST'])
 def subscribe(): 
     email = request.form['email']
     db = get_db_connection()

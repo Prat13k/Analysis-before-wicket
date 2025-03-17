@@ -21,8 +21,9 @@ ul{
 }
 
 li{
-    display: inline;
+    display: inline-block;
     align-items: center;
+    margin: 0 15px;
 }
 
 nav{
