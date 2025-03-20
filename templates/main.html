@@ -25,11 +25,13 @@
 					</li>
 					<li>
 						<a href="aboutus.html">
-							About-Us
+							AboutUs
 						</a>
 					</li>
 				</ul>
-				<form action="/subscribe" method="post">
+				<form action="{{ url_for('subscribe') }}" method="POST">
+					<label for="email">Email:</label>
+					<input type="email" name="email" placeholder="Enter your email" required>
 					<label for="subscribe">Subscribe</label>
 					<label class="switch">
 						<input type="checkbox" name="subscribe" onchange="this.form.submit()">

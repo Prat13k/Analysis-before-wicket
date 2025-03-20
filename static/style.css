@@ -1,115 +1,108 @@
-body{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: khaki;
-    border: 2px 2px 2px 2px;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
-    overflow: hidden;
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Sans-serif typography */
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333; /* Dark gray text color */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Improved readability */
 }
 
-header{
-    display: inline;
+header {
+    background-color: #ffffff; /* White header */
+    padding: 20px 0; /* Padding for header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1 {
+    font-size: 2.5rem; /* Large heading */
     text-align: center;
-    color: darkblue;
-    font-size: 1.2rem;
+    margin: 0; /* Remove default margin */
+    color: #2c3e50; /* Navy color for the main title */
 }
 
-ul{
-    list-style: none;
-    text-align: center;
-    padding: 0px;
+nav {
+    text-align: center; /* Center navigation */
+    margin-top: 10px; /* Space above navigation */
 }
 
-li{
-    display: inline-block;
-    align-items: center;
-    margin: 0 15px;
+ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
 }
 
-nav{
-    display: inline;
+li {
+    display: inline; /* Inline list items */
+    margin: 0 15px; /* Space between items */
 }
 
-form{
-    margin-left: 90%;
-    margin-top: 0px;
+a {
+    text-decoration: none; /* Remove underline */
+    color: #2980b9; /* Teal color for links */
+    font-weight: bold; /* Bold links */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 34px;
-    height: 20px;
+a:hover {
+    color: #3498db; /* Lighter teal on hover */
+    text-decoration: underline; /* Underline on hover */
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+form {
+    display: inline-block; /* Inline form */
+    margin-top: 10px; /* Space above form */
 }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 20px;
+input[type="email"] {
+    padding: 10px; /* Padding for input */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 10px; /* Space between input and checkbox */
+    font-size: 1rem; /* Font size for input */
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
+input[type="checkbox"] {
+    margin-left: 5px; /* Space before checkbox */
 }
 
-input:checked + .slider {
-    background-color: #4CAF50;
+footer {
+    background-color: #ffffff; /* White footer */
+    text-align: center; /* Center footer text */
+    padding: 20px 0; /* Padding for footer */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: relative; /* Positioning for footer */
+    bottom: 0; /* Stick to bottom */
+    width: 100%; /* Full width */
 }
 
-input:checked + .slider:before {
-    transform: translateX(14px);
+footer p {
+    margin: 5px 0; /* Space between footer paragraphs */
+    color: #666; /* Light gray text for footer */
 }
 
-article{
-	align-items: justify;
+article {
+    padding: 20px; /* Padding for article */
+    max-width: 800px; /* Max width for content */
+    margin: 20px auto; /* Center article */
+    background-color: #ffffff; /* White background for article */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.About-section{
-    display: flexbox;
+h4 {
+    font-size: 1.5rem; /* Medium heading size */
+    color: #2c3e50; /* Navy color for blog titles */
+    margin-top: 0; /* Remove top margin */
 }
 
-h3{
-	font-size: 1.5rem;
-    color: darkblue;
-    margin-bottom: 0px;
-    margin-top: 1px;
-    text-align: center;
+h3 {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-h6{
-    color: darkblue;
-    text-align: center;
-    font-size: 0.8rem;
-}
-
-p{
-	text-align: justify;
-	margin: 2%;
-    color: darkblue;
-}
-
-footer{
-    font-size: 0.6rem;
-    color: darkblue;
-    align-items: center;
+p {
+    margin: 10px 0; /* Space between paragraphs */
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #555; /* Darker gray for paragraph text */
 }
