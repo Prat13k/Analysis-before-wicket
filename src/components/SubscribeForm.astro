@@ -1,0 +1,63 @@
+<section class="bg-green-900 text-white py-16">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">Subscribe for Updates</h2>
+    
+    <form id="subscribe-form" class="max-w-md mx-auto">
+      <div class="flex">
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Email address" 
+          class="flex-grow px-4 py-3 rounded-l-lg text-black focus:outline-none"
+          required
+        />
+        <button 
+          type="submit" 
+          class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-r-lg"
+        >
+          Subscribe
+        </button>
+      </div>
+      <p id="form-message" class="mt-2 text-sm"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('subscribe-form');
+    const message = document.getElementById('form-message');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      message.textContent = '';
+      
+      const email = form.email.value;
+      
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          message.textContent = 'Thank you for subscribing!';
+          message.className = 'mt-2 text-sm text-green-200';
+          form.reset();
+        } else {
+          message.textContent = data.message || 'Something went wrong. Please try again.';
+          message.className = 'mt-2 text-sm text-red-300';
+        }
+      } catch (err) {
+        message.textContent = 'An error occurred. Please try again later.';
+        message.className = 'mt-2 text-sm text-red-300';
+      }
+    });
+  });
+</script>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import prisma from '../../lib/database';
+import { formatDate } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const blogs = await prisma.blog.findMany();
+  
+  return blogs.map(blog => ({
+    params: { slug: blog.slug },
+    props: { blog },
+  }));
+}
+
+const { blog } = Astro.props;
+const date = formatDate(blog.publishedAt);
+---
+
+<BaseLayout title={blog.title} description={blog.description}>
+  <article class="container mx-auto py-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-6">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex items-center">
+            <img 
+              src={`/images/flags/${blog.country1.toLowerCase()}.svg`} 
+              alt={`${blog.country1} flag`} 
+              class="w-10 h-6 object-cover rounded-sm"
+            />
+            <span class="mx-2">vs</span>
+            <img 
+              src={`/images/flags/${blog.country2.toLowerCase()}.svg`} 
+              alt={`${blog.country2} flag`} 
+              class="w-10 h-6 object-cover rounded-sm"
+            />
+          </div>
+          
+          <span class={`text-sm font-medium py-1 px-3 rounded-full ${blog.type === 'pre-match' ? 'bg-green-200 text-green-800' : 'bg-green-900 text-white'}`}>
+            {blog.type === 'pre-match' ? 'Pre-match' : 'Post-match'}
+          </span>
+        </div>
+        
+        <h1 class="text-4xl font-bold mb-2">{blog.title}</h1>
+        <p class="text-gray-500 mb-6">{date} • {blog.readTime} min read</p>
+      </div>
+      
+      <div class="prose prose-lg max-w-none">
+        <Fragment set:html={blog.content} />
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/" class="text-green-800 hover:text-green-900 font-medium">&larr; Back to all blogs</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
