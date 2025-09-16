@@ -110,12 +110,22 @@ a{
 	margin-top:15px;
 }
 
+.headtoheadsection{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	box-sizing:border-box;
+	padding:20px;
+	width:100%;
+}
+
 .headtoheadsection #button #compare-button{
 	border-radius:50px;
 	background-color:white;
-	margin-left:40%;
-	width:15%;
+	width:150%;
 	height:50px;
+	text-align:center;
+	text-decoration:bold;
 }
 
 .headtoheadsection #first-player{
@@ -124,6 +134,7 @@ a{
 	justify-content:left;
 	font-family:Arial;
 	font-weight:bold;
+	cursor:pointer;
 }
 
 .headtoheadsection #second-player{
@@ -132,11 +143,25 @@ a{
 	justify-content:right;
 	font-family:Arial;
 	font-weight:bold;
+	cursor:pointer;
+}
+
+#player-one-button,#player-two-button{
+	height:32px;
+	border:2px solid #28a745;
+	border-radius:50px;
+	display:inline-block;
+	padding:5px 10px;
+	font-size:16px;
+	transition:all 0.3s ease;
+	margin-left:20px;
+	justify-content:center;
+	
 }
 
 footer{
 	text-align:center;
-	font-size:10px;
+	font-s3ze:10px;
 	font-weight:bold;
 	margin-bottom:15px;
 	margin-top:15px;
