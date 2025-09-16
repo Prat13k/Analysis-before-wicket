@@ -117,6 +117,7 @@ a{
 	box-sizing:border-box;
 	padding:20px;
 	width:100%;
+	gap:10px;
 }
 
 .headtoheadsection #button #compare-button{
@@ -135,6 +136,7 @@ a{
 	font-family:Arial;
 	font-weight:bold;
 	cursor:pointer;
+	white-space:wrap;
 }
 
 .headtoheadsection #second-player{
@@ -144,10 +146,21 @@ a{
 	font-family:Arial;
 	font-weight:bold;
 	cursor:pointer;
+	white-space:wrap;
+}
+
+.headtoheadsection #first-player .players{
+	display:flex;
+	align-items:center;
+}
+
+.headtoheadsection #second-player .players{
+	display:flex;
+	align-items:center;
 }
 
 #player-one-button,#player-two-button{
-	height:32px;
+	height:35px;
 	border:2px solid #28a745;
 	border-radius:50px;
 	display:inline-block;
