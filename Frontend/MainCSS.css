@@ -94,6 +94,12 @@ a{
 	margin-top:10px;
 }
 
+.page-details{
+	text-align:center;
+	text-decoration:underline;
+	font-size:25px;
+}
+
 #upcoming-matches{
 	font-family:Arial;
 	font-size:15px;
@@ -110,71 +116,27 @@ a{
 	margin-top:15px;
 }
 
-.headtoheadsection{
+.blogs{
+	display:grid;
+	grid-template-columns:repeat(2,1fr);
+	gap:20px;
+	background:#FDF9EC;
+	overflow:hidden;
+	position:relative;
+}
+
+.blog-card{
 	display:flex;
-	justify-content:space-between;
-	align-items:center;
-	box-sizing:border-box;
-	padding:20px;
+	flex-direction:column;
 	width:100%;
-	gap:10px;
-}
-
-.headtoheadsection #button #compare-button{
+	position:relative;
 	border-radius:50px;
-	background-color:white;
-	width:150%;
-	height:50px;
-	text-align:center;
-	text-decoration:bold;
-}
-
-.headtoheadsection #first-player{
-	display:flex;
-	align-items:left;
-	justify-content:left;
-	font-family:Arial;
-	font-weight:bold;
-	cursor:pointer;
-	white-space:wrap;
-}
-
-.headtoheadsection #second-player{
-	display:flex;
-	align-items:right;
-	justify-content:right;
-	font-family:Arial;
-	font-weight:bold;
-	cursor:pointer;
-	white-space:wrap;
-}
-
-.headtoheadsection #first-player .players{
-	display:flex;
-	align-items:center;
-}
-
-.headtoheadsection #second-player .players{
-	display:flex;
-	align-items:center;
-}
-
-#player-one-button,#player-two-button{
-	height:35px;
-	border:2px solid #28a745;
-	border-radius:50px;
-	display:inline-block;
-	padding:5px 10px;
-	font-size:16px;
-	transition:all 0.3s ease;
-	margin-left:20px;
-	justify-content:center;
-	
+	overflow:hidden;
 }
 
 footer{
 	text-align:center;
-	font-s3ze:10px;
+	font-size:10px;
 	font-weight:bold;
 	margin-bottom:15px;
 	margin-top:15px;
