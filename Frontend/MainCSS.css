@@ -63,13 +63,29 @@ body{
 
 #title{
 	flex:1;
-	font-family:Arial;
+	font-family:'Inter', sans-serif;
 	font-size:30px;
 	text-align:center;
 	margin-left:60px;
 	font-weight:bold;
 	color:white;
 } 
+
+@font-face{
+	font-family: 'Inter';
+	src:url('/fonts/Inter-Regular.woff2')format('woff2'),url('/fonts/Inter-Regular.woff')format('woff');
+	font-weight:400;
+	font-style:normal;
+	font-display:swap;
+}
+
+@font-face{
+	font-family: 'Inter';
+	src:url('/fonts/Inter-Regular.woff2')format('woff2'),url('/fonts/Inter-Regular.woff')format('woff');
+	font-weight:400;
+	font-style:normal;
+	font-display:swap;
+}
 
 a{
 	font-family:Arial;
@@ -125,13 +141,23 @@ a{
 	position:relative;
 }
 
-.blog-card{
+.blogs-card{
 	display:flex;
 	flex-direction:column;
 	width:100%;
 	position:relative;
 	border-radius:50px;
 	overflow:hidden;
+}
+
+.blogs-title{
+	font-size:20px;
+	text-align:center;
+}
+
+.blogs-date{
+	font-size:10px;
+	text-align:center;
 }
 
 footer{
