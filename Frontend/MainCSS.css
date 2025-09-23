@@ -1,13 +1,15 @@
 body{
-	background-color:#FDF9EC;
+	background-color:#F8F8F4;
 	width:absolute;
+	font-family:'Poppins',sans-serif;
+	color:#5D4037;
 }
 
 #header{
-	display:flex;
-	background-color:#800000;	
+	display:flex;	
 	justify-content:center;
 	border-bottom: 1px solid;
+	font-family:'Poppins',sans-serif;
 }
 
 #logo{
@@ -26,8 +28,6 @@ body{
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	background-color:white;
-	color:green;
 	position:relative;
 	font-weight:bold;
 	overflow:hidden;
@@ -54,7 +54,7 @@ body{
 }
 
 .subscribe:hover{
-	background-color:#218838;
+	background-color:#F5F5F5;
 }
 
 .search-container{
@@ -63,35 +63,14 @@ body{
 
 #title{
 	flex:1;
-	font-family:'Inter', sans-serif;
 	font-size:30px;
 	text-align:center;
 	margin-left:60px;
 	font-weight:bold;
-	color:white;
 } 
 
-@font-face{
-	font-family: 'Inter';
-	src:url('/fonts/Inter-Regular.woff2')format('woff2'),url('/fonts/Inter-Regular.woff')format('woff');
-	font-weight:400;
-	font-style:normal;
-	font-display:swap;
-}
-
-@font-face{
-	font-family: 'Inter';
-	src:url('/fonts/Inter-Regular.woff2')format('woff2'),url('/fonts/Inter-Regular.woff')format('woff');
-	font-weight:400;
-	font-style:normal;
-	font-display:swap;
-}
-
 a{
-	font-family:Arial;
 	font-weight:bold;
-	color:black;
-	text-decoration:None;
 	margin-right:50px;
 	margin-bottom:5px;
 }
@@ -112,12 +91,16 @@ a{
 
 .page-details{
 	text-align:center;
-	text-decoration:underline;
 	font-size:25px;
 }
 
+.nav-item{
+	color:#5D4037;
+	text-decoration:None;
+	margin-left:40px;
+}
+
 #upcoming-matches{
-	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	margin-bottom:15px;
@@ -125,7 +108,6 @@ a{
 }
 
 #recently-finished-matches{
-	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	margin-bottom:15px;
