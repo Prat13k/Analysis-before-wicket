@@ -3,6 +3,7 @@ body{
 	width:absolute;
 	font-family:'Poppins',sans-serif;
 	color:#5D4037;
+	text-decoration:thin;
 }
 
 #header{
@@ -73,6 +74,18 @@ a{
 	font-weight:bold;
 	margin-right:50px;
 	margin-bottom:5px;
+}
+
+#date-filter{
+	position:absolute;
+	right:10px;
+	padding:5px;
+	border-radius:10px;
+	border:1px solid black;
+	width:105px;
+	font-family:Arial;
+	background-color:#F8F8F4;
+	color:#5D4037;
 }
 
 #pages{
