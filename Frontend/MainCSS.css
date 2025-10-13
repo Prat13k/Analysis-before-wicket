@@ -19,49 +19,6 @@ body{
 	border-radius:50px;
 }
 
-#header .subscribe{
-	padding:20px;
-	border-radius:50px;
-	cursor:pointer;
-	width:200px;
-	height:2px;
-	margin-top:25px;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	position:relative;
-	font-weight:bold;
-	overflow:hidden;
-	transition:all 0.3s ease;
-	margin-right:10px;
-}
-
-.subscribe::after{
-	position:absolute;
-	background:rgba(255,255,255,0.3);
-	transition:left 0.3s ease;
-	top:0;
-	left:-100%;
-	width:100%;
-	height:100%
-}
-
-.subscribe:hover::after{
-	left:0;
-}
-
-.subscribe:hover::after{
-	left:0;
-}
-
-.subscribe:hover{
-	background-color:#F5F5F5;
-}
-
-.search-container{
-	text-align:center;
-}
-
 #title{
 	flex:1;
 	font-size:30px;
