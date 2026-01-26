@@ -1,8 +1,8 @@
-import { fetchblogs } from "./js/fetchblogs.js";
+import { fetchblogs } from "./fetchblogs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const blogs = await fetchblogs({ mode: "all" });
+        const blogs = await fetchblogs();
         const container = document.getElementById("recent-blogs");
 
         if (!blogs || blogs.length === 0) {
