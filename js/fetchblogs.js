@@ -1,4 +1,4 @@
-async function fetchblogs({ limit = null, order = "desc" } = {}) {
+export async function fetchblogs({ limit = null, order = "desc" } = {}) {
   const response = await fetch("Analysis-before-wicket/data/blogs.json");
   let blogs = await response.json();
 
