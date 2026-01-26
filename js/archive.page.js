@@ -1,22 +1,30 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.getElementById("recent-blogs");
+
   try {
-    const blogs = await fetchblogs(); // all blogs by default
-    const container = document.getElementById("recent-blogs");
+    const blogs = await fetchblogs(); // default: all blogs
+
+    if (!Array.isArray(blogs) || blogs.length === 0) {
+      container.innerHTML = "<p>No blogs available.</p>";
+      return;
+    }
 
     container.innerHTML = blogs
       .map(
         blog => `
-          <article>
+          <article class="blog-card">
             <h2>${blog.title}</h2>
-            <p>${blog.content.substring(0, 200)}...</p>
-            <small>${new Date(blog.created_at).toDateString()}</small>
+            <p>${(blog.content || "").slice(0, 200)}...</p>
+            <time datetime="${blog.created_at}">
+              ${new Date(blog.created_at).toDateString()}
+            </time>
           </article>
         `
       )
       .join("");
+
   } catch (err) {
     console.error(err);
-    document.getElementById("recent-blogs").innerHTML =
-      "Failed to load blogs";
+    container.innerHTML = "<p>Failed to load blogs.</p>";
   }
 });
