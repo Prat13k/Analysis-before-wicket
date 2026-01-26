@@ -1,5 +1,5 @@
 async function fetchblogs({ limit = null, order = "desc" } = {}) {
-  const response = await fetch("data/blogs.json");
+  const response = await fetch("Analysis-before-wicket/data/blogs.json");
   let blogs = await response.json();
 
   // sort by date
