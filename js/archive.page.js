@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         blog => `
           <article class="blog-card">
             <h2>${blog.title}</h2>
-            <p>${(blog.content || "").slice(0, 200)}...</p>
+            <p>${(blog.content || "").slice(0, 1000)}...</p>
             <time datetime="${blog.created_at}">
               ${new Date(blog.created_at).toDateString()}
             </time>
