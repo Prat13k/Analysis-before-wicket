@@ -1,3 +1,5 @@
+import { fetchblogs } from "./fetchblogs.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const blogs = await fetchblogs({ mode: "all" });
