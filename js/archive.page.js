@@ -1,4 +1,4 @@
-import { fetchblogs } from "./fetchblogs.js";
+import { fetchblogs } from "./js/fetchblogs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("recent-blogs");
