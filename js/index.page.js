@@ -13,11 +13,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.innerHTML = blogs
             .map(
                 blog => `
-                <article class="blog-card">
-                    <h2>${blog.title}</h2>
-                    <p>${blog.content.substring(0, 200)}...</p>
-                    <small>${new Date(blog.created_at).toDateString()}</small>
-                </article>
+                <a href="blog.html?slug=${blog.slug}" class="blog-link">
+                    <article class="blog-card">
+                        <h2>${blog.title}</h2>
+                        <p>${blog.content.substring(0, 200)}...</p>
+                        <small>${new Date(blog.created_at).toDateString()}</small>
+                    </article>
+                </a>
                 `
             )
             .join("");
