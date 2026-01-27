@@ -246,3 +246,11 @@ footer .footer-legal {
   text-decoration: underline;
 }
 
+.blog-body hr {
+  border: none;
+  height: 1px;
+  background: #333;
+  margin: 2.5rem 0;
+}
+
+
