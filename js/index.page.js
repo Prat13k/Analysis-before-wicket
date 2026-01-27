@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <p>${blog.content.substring(0, 200)}...</p>
                         <small>${new Date(blog.created_at).toDateString()}</small>
                     </article>
-                </a>
-                `
+                </a>`
             )
             .join("");
     } catch (err) {
