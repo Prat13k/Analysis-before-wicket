@@ -1,14 +1,17 @@
 import { fetchblogs } from "./fetchblogs.js";
 
-const container = document.getElementById("recent-blogs");
-
-if (!container) {
-  console.debug("archive.page.js loaded on a non-archive page");
-  return;
-}
-
 (async () => {
   try {
+    // Get archive container
+    const container = document.getElementById("recent-blogs");
+
+    // Guard: exit safely if not on archive page
+    if (!container) {
+      console.debug("archive.page.js loaded on a non-archive page");
+      return;
+    }
+
+    // Fetch blogs
     const blogs = await fetchblogs();
 
     if (!Array.isArray(blogs) || blogs.length === 0) {
@@ -16,26 +19,30 @@ if (!container) {
       return;
     }
 
+    // Render blog cards
     container.innerHTML = blogs
-      .map(
-        blog => `
-          <a href="blog.html?slug=${blog.slug}" class="blog-link">
-            <article class="blog-card">
-              <h2>${blog.title}</h2>
-              <p>${stripHTML(blog.content).slice(0, 120)}...</p>
-              <small>${new Date(blog.created_at).toDateString()}</small>
-            </article>
-          </a>
-        `
-      )
+      .map(blog => `
+        <a href="blog.html?slug=${blog.slug}" class="blog-link">
+          <article class="blog-card">
+            <h2>${blog.title}</h2>
+            <p>${stripHTML(blog.content).slice(0, 120)}...</p>
+            <small>${new Date(blog.created_at).toDateString()}</small>
+          </article>
+        </a>
+      `)
       .join("");
 
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = "<p>Failed to load blogs.</p>";
+  } catch (error) {
+    console.error("Error loading archive:", error);
+
+    const container = document.getElementById("recent-blogs");
+    if (container) {
+      container.innerHTML = "<p>Failed to load blogs.</p>";
+    }
   }
 })();
 
+// Utility: remove HTML tags for preview text
 function stripHTML(html) {
   const div = document.createElement("div");
   div.innerHTML = html;
