@@ -1,105 +1,126 @@
-/* ========================= RESET & BASE ========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* =========================
+CONTACT & ABOUT US PAGES
+========================= */
+
+/* Page container */
+.page-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
 }
 
-html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-  background-color: #F5F4F0;
+/* Page title */
+.page-container h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 1rem;
   color: #222;
 }
 
-body {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-  line-height: 1.6;
-}
-
-/* ========================= HEADER & FOOTER BASE ========================= */
-.site-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.site-section h1 {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 10px;
-}
-
-.site-section h2 {
-  font-size: 12px;
+/* Subtitle / description */
+.page-container h2 {
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: -0.5px;
-  margin-bottom: 10px;
-  margin-top: -6px;
-}
-
-.site-section ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.site-section ul a {
-  text-decoration: none;
-  font-size: 15px;
   color: #555;
-  font-weight: 500;
+  margin-bottom: 1.5rem;
 }
 
-.site-section ul a:hover {
-  color: #000;
+/* Paragraphs */
+.page-container p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1.2rem;
 }
 
-.site-logo {
-  height: calc(52px + 10px + 15px);
-  width: auto;
-  object-fit: contain;
-}
-
-/* ========================= SPECIFIC STYLES ========================= */
-header.site-section {
-  border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 30px;
-}
-
-footer.site-section {
-  border-top: 1px solid #e6e6e6;
-  margin-top: 30px;
-  background-color: #F5F4F0;
-}
-
-/* ========================= HEADER/FOOTER LEFT SIDE ========================= */
-.section-left {
+/* Form styling (for Contact Us) */
+.contact-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 15px;
 }
 
-/* ========================= MAIN CONTENT ========================= */
-main h3 {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-/* Blog cards */
-#recent-blogs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-#recent-blogs article {
-  background-color: #fff;
-  padding: 15px;
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #5da9ff;
+  box-shadow: 0 0 6px rgba(93, 169, 255, 0.3);
+}
+
+.contact-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #5da9ff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0066cc;
+  transform: translateY(-2px);
+}
+
+/* Contact / About sections layout */
+.about-section,
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Optional: image or illustration on about us */
+.about-section img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+/* Footer links on pages */
+.page-footer {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #e6e6e6;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+.page-footer a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 8px;
+}
+
+.page-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .page-container h1 {
+    font-size: 26px;
+  }
+  .page-container h2 {
+    font-size: 14px;
+  }
 }
