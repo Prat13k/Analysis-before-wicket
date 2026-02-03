@@ -5,6 +5,11 @@ const slug = params.get("slug");
 
 const container = document.getElementById("blog-container");
 
+if (!container) {
+  console.debug("blog.page.js loaded on a non-blog page");
+  return;
+}
+
 (async () => {
   const blogs = await fetchblogs();
   const blog = blogs.find(b => b.slug === slug);
@@ -22,19 +27,17 @@ const container = document.getElementById("blog-container");
     </div>
   `;
 
-  // Example chart (only if canvas exists)
+  // Chart (optional)
   const ctx = document.getElementById("runRateChart");
-  if (ctx) {
+  if (ctx && window.Chart) {
     new Chart(ctx, {
       type: "line",
       data: {
         labels: ["Over 5", "Over 10", "Over 15", "Over 20"],
-        datasets: [
-          {
-            label: "Run Rate",
-            data: [6.2, 7.1, 8.5, 9.3]
-          }
-        ]
+        datasets: [{
+          label: "Run Rate",
+          data: [6.2, 7.1, 8.5, 9.3]
+        }]
       }
     });
   }
