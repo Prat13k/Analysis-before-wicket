@@ -3,7 +3,7 @@ import { fetchblogs } from "./fetchblogs.js";
 (async () => {
   try {
     // Get archive container
-    const container = document.getElementById("recent-blogs");
+    const container = document.getElementById("all-blogs");
 
     // Guard: exit safely if not on archive page
     if (!container) {
