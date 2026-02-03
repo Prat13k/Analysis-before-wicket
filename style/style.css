@@ -1,228 +1,105 @@
-/* =========================
-   GLOBAL RESET & BASE
-========================= */
-
+/* ========================= RESET & BASE ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg: #0e1117;
-  --card: #161b22;
-  --text: #e6edf3;
-  --muted: #9da7b3;
-  --accent: #2f81f7;
-  --border: #262c36;
-}
-
 html {
-  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  background-color: #F5F4F0;
+  color: #222;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
   line-height: 1.6;
 }
 
-/* =========================
-   LINKS
-========================= */
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--accent);
-}
-
-/* =========================
-   ARCHIVE PAGE
-========================= */
-
-#recent-blogs {
-  max-width: 1100px;
-  margin: 4rem auto;
-  padding: 0 1.5rem;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-/* Blog Card */
-.blog-link {
-  display: block;
-}
-
-.blog-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.blog-card h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.blog-card p {
-  font-size: 0.95rem;
-  color: var(--muted);
-  flex-grow: 1;
-}
-
-.blog-card small {
-  font-size: 0.8rem;
-  color: #7d8590;
-}
-
-/* =========================
-   SINGLE BLOG PAGE
-========================= */
-
-#blog-container {
-  max-width: 820px;
-  margin: 4rem auto;
-  padding: 0 1.5rem;
-}
-
-.full-blog {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2.5rem;
-}
-
-.full-blog h1 {
-  font-size: 2.1rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.full-blog small {
-  display: block;
-  color: var(--muted);
-  margin-bottom: 2rem;
-}
-
-.blog-body {
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-.blog-body p {
-  margin-bottom: 1.2rem;
-}
-
-.blog-body h2,
-.blog-body h3 {
-  margin: 2rem 0 1rem;
-}
-
-.blog-body img {
-  max-width: 100%;
-  border-radius: 10px;
-  margin: 1.5rem 0;
-}
-
-.blog-body ul,
-.blog-body ol {
-  margin-left: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.site-footer {
-  margin-top: 5rem;
-  background: #0b0e14;
-  border-top: 1px solid var(--border);
-}
-
-.footer-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2.5rem 1.5rem;
-
+/* ========================= HEADER & FOOTER BASE ========================= */
+.site-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  padding: 20px 0;
 }
 
-.footer-title {
-  font-size: 1.2rem;
+.site-section h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.site-section h2 {
+  font-size: 12px;
   font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  margin-top: -6px;
 }
 
-.footer-tagline {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-.footer-nav {
+.site-section ul {
   display: flex;
-  gap: 1.5rem;
+  gap: 20px;
+  list-style: none;
 }
 
-.footer-nav a {
-  font-size: 0.95rem;
-  color: var(--muted);
+.site-section ul a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
 }
 
-.footer-nav a:hover {
-  color: var(--accent);
+.site-section ul a:hover {
+  color: #000;
 }
 
-.footer-legal {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.8rem;
-  color: #7d8590;
-  border-top: 1px solid var(--border);
+.site-logo {
+  height: calc(52px + 10px + 15px);
+  width: auto;
+  object-fit: contain;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ========================= SPECIFIC STYLES ========================= */
+header.site-section {
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 30px;
+}
 
-@media (max-width: 768px) {
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
+footer.site-section {
+  border-top: 1px solid #e6e6e6;
+  margin-top: 30px;
+  background-color: #F5F4F0;
+}
 
-  .full-blog {
-    padding: 1.75rem;
-  }
+/* ========================= HEADER/FOOTER LEFT SIDE ========================= */
+.section-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  .full-blog h1 {
-    font-size: 1.7rem;
-  }
+/* ========================= MAIN CONTENT ========================= */
+main h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Blog cards */
+#recent-blogs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+#recent-blogs article {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
