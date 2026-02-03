@@ -3,14 +3,14 @@ import { fetchblogs } from "./fetchblogs.js";
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("slug");
 
-const container = document.getElementById("blog-container");
-
-if (!container) {
-  console.debug("blog.page.js loaded on a non-blog page");
-  return;
-}
-
 (async () => {
+  const container = document.getElementById("blog-container");
+
+  if (!container) {
+    console.debug("blog.page.js loaded on a non-blog page");
+    return;
+  }
+
   const blogs = await fetchblogs();
   const blog = blogs.find(b => b.slug === slug);
 
@@ -27,7 +27,7 @@ if (!container) {
     </div>
   `;
 
-  // Chart (optional)
+  // Optional chart
   const ctx = document.getElementById("runRateChart");
   if (ctx && window.Chart) {
     new Chart(ctx, {
