@@ -131,12 +131,12 @@ main h3 {
 ========================= */
 
 footer {
-  margin-top: 60px;
-  padding-top: 30px;
-  border-top: 1px solid #e6e6e6;
-  font-size: 13px;
-  color: #555;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 footer p {
@@ -147,6 +147,23 @@ footer .about-us,
 footer .contact-us,
 footer .footer-legal {
   max-width: 100%;
+}
+
+footer ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+footer ul a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+footer ul a:hover {
+  color: #000;
 }
 
 /* Footer links container */
