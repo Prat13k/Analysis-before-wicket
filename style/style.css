@@ -297,4 +297,113 @@ footer .footer-legal {
   font-size: 0.8rem;
 }
 
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-section {
+  max-width: 780px;
+  margin: 60px auto;
+  padding: 0 10px;
+}
+
+.about-section h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 40px;
+  letter-spacing: -0.3px;
+}
+
+.about-section p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* subtle separation */
+.about-section h3:first-child {
+  margin-top: 0;
+}
+
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact-section {
+  max-width: 640px;
+  margin: 60px auto;
+  padding: 0 10px;
+}
+
+.contact-section h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.contact-section p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: inherit;
+  font-size: 14.5px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d6d6d6;
+  background: #ffffff;
+  color: #222;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+/* Submit button */
+.contact-form button {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 22px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.contact-form button:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
 
