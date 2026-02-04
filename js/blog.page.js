@@ -25,7 +25,10 @@ import { fetchblogs } from "./fetchblogs.js";
       container.innerHTML = "<h2>Blog not found</h2>";
       return;
     }
-
+    
+    // Added this
+    const renderedContent = window.marked.parse(blog.content);
+    
     // Render blog
     container.innerHTML = `
       <article class="full-blog">
