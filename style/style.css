@@ -404,3 +404,33 @@ RESPONSIVE
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================
+For beautifying blogs
+========================= */
+
+.markdown-body h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.3rem;
+}
+
+.markdown-body h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+}
+
+.markdown-body p {
+  line-height: 1.75;
+  margin: 1rem 0;
+  font-size: 1.05rem;
+}
+
+.markdown-body ul {
+  padding-left: 1.5rem;
+}
+
+.markdown-body strong {
+  color: #111;
+}
