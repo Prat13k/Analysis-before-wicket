@@ -42,7 +42,7 @@ import { fetchblogs } from "./fetchblogs.js";
         <h1>${blog.title}</h1>
         <small>${new Date(blog.created_at).toDateString()}</small>
         <div class="blog-body">
-          ${blog.content}
+          ${renderedContent}
         </div>
       </article>
     `;
