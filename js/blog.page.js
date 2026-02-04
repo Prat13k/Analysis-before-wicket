@@ -27,7 +27,14 @@ import { fetchblogs } from "./fetchblogs.js";
     }
     
     // Added this
-    const renderedContent = window.marked.parse(blog.content);
+    let renderedContent;
+
+    if (window.marked) {
+      renderedContent = window.marked.parse(blog.content);
+    } else {
+      console.error("Marked.js not loaded");
+      renderedContent = blog.content; // fallback
+    }
     
     // Render blog
     container.innerHTML = `
