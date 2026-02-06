@@ -2,7 +2,7 @@ import { fetchblogs } from "./fetchblogs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const blogs = await fetchblogs();
+        const blogs = await fetchblogs({ limit: 5 });  // Limit to top 5 blogs
         const container = document.getElementById("recent-blogs");
 
         if (!blogs || blogs.length === 0) {
@@ -12,14 +12,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         container.innerHTML = blogs
             .map(
-                blog => `
-                <a href="blog.html?slug=${blog.slug}" class="blog-link">
-                    <article class="blog-card">
-                        <h2>${blog.title}</h2>
-                        <p>${blog.content.substring(0, 100)}...</p>
-                        <small>${new Date(blog.created_at).toDateString()}</small>
-                    </article>
-                </a>`
+                blog => {
+                    const preview = stripHTML(blog.content || "").slice(0, 100) || "No preview available";
+                    const date = blog.created_at ? new Date(blog.created_at).toDateString() : "Unknown date";
+                    return `
+                    <a href="blog.html?slug=${blog.slug || 'unknown'}" class="blog-link">
+                        <article class="blog-card">
+                            <h2>${blog.title || "Untitled"}</h2>
+                            <p>${preview}...</p>
+                            <small>${date}</small>
+                        </article>
+                    </a>`;
+                }
             )
             .join("");
     } catch (err) {
@@ -28,3 +32,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             "<p>Failed to load blogs.</p>";
     }
 });
+
+// Utility: remove HTML tags for preview text
+function stripHTML(html) {
+  if (!html) return "";
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+}
