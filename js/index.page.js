@@ -2,7 +2,7 @@ import { fetchblogs } from "./fetchblogs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const blogs = await fetchblogs({ limit: 5 });  // Limit to top 5 blogs
+        const blogs = await fetchblogs({ limit: 6 });  // Limit to top 6 blogs
         const container = document.getElementById("recent-blogs");
 
         if (!blogs || blogs.length === 0) {
