@@ -4,6 +4,7 @@ import { fetchblogs } from "./fetchblogs.js";
   try {
     // Get archive container
     const container = document.getElementById("all-blogs");
+    console.log("Archive page - Container found:", container);  // Debug: Should log the element or null
 
     // Guard: exit safely if not on archive page
     if (!container) {
