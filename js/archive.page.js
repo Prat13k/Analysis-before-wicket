@@ -27,7 +27,7 @@ import { fetchblogs } from "./fetchblogs.js";
     // Render blog cards with fallbacks
     container.innerHTML = blogs
       .map(blog => {
-        const preview = stripHTML(blog.content || "").slice(0, 120) || "No preview available";
+        const preview = stripHTML(blog.content || "").slice(0, 0) || "No preview available";
         const date = blog.created_at ? new Date(blog.created_at).toDateString() : "Unknown date";
         return `
           <a href="blog.html?slug=${blog.slug || 'unknown'}" class="blog-link">
