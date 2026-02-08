@@ -2,6 +2,11 @@ import { fetchblogs } from "./fetchblogs.js";
 
 (async () => {
   try {
+    const blogs = await fetchblogs();
+
+    // 2️⃣ Sort by id DESC
+    blogs.sort((a, b) => b.id - a.id);
+    
     // Get archive container
     const container = document.getElementById("all-blogs");
     console.log("Archive page - Container found:", container);  // Debug: Should log the element or null
