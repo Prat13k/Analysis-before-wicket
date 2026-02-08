@@ -2,10 +2,6 @@ import { fetchblogs } from "./fetchblogs.js";
 
 (async () => {
   try {
-    const blogs = await fetchblogs();
-
-    // 2️⃣ Sort by id DESC
-    blogs.sort((a, b) => b.id - a.id);
     
     // Get archive container
     const container = document.getElementById("all-blogs");
@@ -21,6 +17,10 @@ import { fetchblogs } from "./fetchblogs.js";
 
     // Fetch blogs with error handling
     const blogs = await fetchblogs();
+    // 2️⃣ Sort by id DESC
+    blogs.sort((a, b) => b.id - a.id);
+
+    
     console.log("Fetched blogs:", blogs);  // Debug log
 
     if (!Array.isArray(blogs) || blogs.length === 0) {
