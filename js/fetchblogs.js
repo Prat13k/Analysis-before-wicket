@@ -17,11 +17,11 @@ export async function fetchblogs({ limit = null, order = "desc" } = {}) {
   }
 
   // sort by date
-  blogs.sort((a, b) => {
+  /*blogs.sort((a, b) => {
     return order === "desc"
       ? new Date(b.created_at) - new Date(a.created_at)
       : new Date(a.created_at) - new Date(b.created_at);
-  });
+  });*/
 
   // limit if needed
   if (limit !== null) {
