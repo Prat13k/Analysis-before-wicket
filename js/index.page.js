@@ -2,9 +2,10 @@ import { fetchblogs } from "./fetchblogs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const blogs = await fetchblogs({ limit: 6 });  // Limit to top 6 blogs
-
-         blogs.sort((a, b) => b.id - a.id); //this is for sorting newly added.
+        const latestblogs = await fetchblogs();  // Limit to top 6 blogs
+        latestblogs.sort((a, b) => b.id - a.id); //this is for sorting newly added.
+        
+        const blogs = blogs.slice(0, 6);
         
         const container = document.getElementById("recent-blogs");
 
