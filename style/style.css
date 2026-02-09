@@ -434,3 +434,80 @@ For beautifying blogs
 .markdown-body strong {
   color: #111;
 }
+
+/*===================================
+About -Us
+====================================*/
+
+/* Container for the About Section */
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Main Heading */
+.about-section h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid;
+  padding-bottom: 10px;
+}
+
+/* Subheadings */
+.about-section h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Paragraphs */
+.about-section p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Bold Text within Paragraphs */
+.about-section strong {
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+/* Unordered Lists */
+.about-section ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.about-section li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  list-style-type: disc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 20px 10px;
+  }
+  
+  .about-section h1 {
+    font-size: 2rem;
+  }
+  
+  .about-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .about-section p {
+    font-size: 1rem;
+  }
+}
