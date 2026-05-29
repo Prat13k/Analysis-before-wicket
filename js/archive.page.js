@@ -33,7 +33,27 @@ import { fetchblogs } from "./fetchblogs.js";
     container.innerHTML = blogs
       .map(blog => {
         const preview = stripHTML(blog.content || "").slice(0, 0) || "No preview available";
-        const date = blog.created_at ? new Date(blog.created_at).toDateString() : "Unknown date";
+        export async function fetchblogs({ limit = null, order = "desc" } = {}) {
+  const response = await fetch("./data/manifest.json");
+  if (!response.ok) {
+    throw new Error(`Failed to fetch manifest: ${response.status}`);
+  }
+
+  let blogs = await response.json();
+
+  // sort by date
+  blogs.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return order === "desc" ? dateB - dateA : dateA - dateB;
+  });
+
+  if (limit !== null) {
+    blogs = blogs.slice(0, limit);
+  }
+
+  return blogs;
+}
         return `
           <a href="blog.html?slug=${blog.slug || 'unknown'}" class="blog-link">
             <article class="blog-card">
