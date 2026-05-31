@@ -1,16 +1,18 @@
 export async function fetchblogs({ limit = null, order = "desc" } = {}) {
-  const response = await fetch("./data/manifest.json");
+  const base = window.location.origin + 
+               window.location.pathname.replace(/\/[^/]*$/, '/');
+  
+  const response = await fetch(base + "data/manifest.json");
   if (!response.ok) {
     throw new Error(`Failed to fetch manifest: ${response.status}`);
   }
 
   let blogs = await response.json();
 
-  // sort by date
   blogs.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return order === "desc" ? dateB - dateA : dateA - dateB;
+    return order === "desc"
+      ? new Date(b.date) - new Date(a.date)
+      : new Date(a.date) - new Date(b.date);
   });
 
   if (limit !== null) {
