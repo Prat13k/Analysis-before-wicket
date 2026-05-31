@@ -8,7 +8,6 @@ import { fetchblogs } from "./fetchblogs.js";
 
     if (!container) return;
 
-    // find the blog entry in manifest
     const blogs = await fetchblogs();
     const blog  = blogs.find(b => b.slug === slug);
 
@@ -17,8 +16,11 @@ import { fetchblogs } from "./fetchblogs.js";
       return;
     }
 
-    // fetch the actual HTML file
-    const htmlResponse = await fetch(blog.file);
+    // build absolute path to the HTML file
+    const base = window.location.origin +
+                 window.location.pathname.replace(/\/[^/]*$/, '/');
+    
+    const htmlResponse = await fetch(base + blog.file);
     if (!htmlResponse.ok) {
       container.innerHTML = "<h2>Could not load blog post</h2>";
       return;
@@ -26,7 +28,6 @@ import { fetchblogs } from "./fetchblogs.js";
 
     const htmlContent = await htmlResponse.text();
 
-    // render it
     container.innerHTML = `
       <article class="full-blog">
         <h1>${blog.title}</h1>
