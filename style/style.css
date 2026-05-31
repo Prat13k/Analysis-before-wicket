@@ -442,7 +442,7 @@ About -Us
 /* About Section */
 
 .about-section h3 {
-  font-size: 1.8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   margin-top: 30px;
   margin-bottom: 15px;
@@ -452,7 +452,7 @@ About -Us
 
 
 .about-section p {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   margin-bottom: 20px;
   text-align: justify;
 
