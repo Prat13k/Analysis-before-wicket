@@ -2,63 +2,30 @@ import { fetchblogs } from "./fetchblogs.js";
 
 (async () => {
   try {
-    
-    // Get archive container
     const container = document.getElementById("all-blogs");
-    console.log("Archive page - Container found:", container);  // Debug: Should log the element or null
 
-    // Guard: exit safely if not on archive page
     if (!container) {
-      console.debug("archive.page.js loaded on a non-archive page - skipping blog load.");
+      console.debug("archive.page.js loaded on a non-archive page - skipping.");
       return;
     }
 
-    console.log("Starting blog fetch...");  // Debug log
-
-    // Fetch blogs with error handling
     const blogs = await fetchblogs();
-    // 2️⃣ Sort by id DESC
     blogs.sort((a, b) => b.id - a.id);
-
-    
-    console.log("Fetched blogs:", blogs);  // Debug log
 
     if (!Array.isArray(blogs) || blogs.length === 0) {
       container.innerHTML = "<p>No blogs available.</p>";
-      console.warn("No blogs to display.");  // Debug log
       return;
     }
 
-    // Render blog cards with fallbacks
     container.innerHTML = blogs
       .map(blog => {
-        const preview = stripHTML(blog.content || "").slice(0, 0) || "No preview available";
-        export async function fetchblogs({ limit = null, order = "desc" } = {}) {
-  const response = await fetch("./data/manifest.json");
-  if (!response.ok) {
-    throw new Error(`Failed to fetch manifest: ${response.status}`);
-  }
-
-  let blogs = await response.json();
-
-  // sort by date
-  blogs.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return order === "desc" ? dateB - dateA : dateA - dateB;
-  });
-
-  if (limit !== null) {
-    blogs = blogs.slice(0, limit);
-  }
-
-  return blogs;
-}
+        const date = blog.date
+          ? new Date(blog.date).toDateString()
+          : "Unknown date";
         return `
           <a href="blog.html?slug=${blog.slug || 'unknown'}" class="blog-link">
             <article class="blog-card">
               <h2>${blog.title || "Untitled"}</h2>
-              <p>${preview}...</p>
               <small>${date}</small>
             </article>
           </a>
@@ -66,23 +33,11 @@ import { fetchblogs } from "./fetchblogs.js";
       })
       .join("");
 
-    console.log("Blogs rendered successfully.");  // Debug log
-
   } catch (error) {
     console.error("Error loading archive:", error);
-
-    // Use the same container for errors
     const container = document.getElementById("all-blogs");
     if (container) {
       container.innerHTML = "<p>Failed to load blogs. Please try again later.</p>";
     }
   }
 })();
-
-// Utility: remove HTML tags for preview text
-function stripHTML(html) {
-  if (!html) return "";
-  const div = document.createElement("div");
-  div.innerHTML = html;
-  return div.textContent || div.innerText || "";
-}
