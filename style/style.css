@@ -411,8 +411,8 @@ For beautifying blogs
 
 .markdown-body h2 {
   font-size: 1.6rem;
-  margin-top: 2rem;
-  border-bottom: 2px solid #eee;
+  margin-top: 1rem;
+  border-bottom: 1px solid #eee;
   padding-bottom: 0.3rem;
 }
 
@@ -455,5 +455,4 @@ About -Us
   font-size: 1.8rem;
   margin-bottom: 20px;
   text-align: justify;
-
 }
