@@ -1,51 +1,147 @@
 <!DOCTYPE html>
-<html lang = "en">
-	<head>
-		<meta charset = "utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="robots" content="index, follow">
-		<meta name="description" content="Analysis Before Wicket is a data-driven cricket analytics platform offering deep insights, performance analysis, head-to-head stats, and modern cricket intelligence.">
-		<meta property="og:title" content="Advanced Cricket Analytics | Analysis Before Wicket">
-		<meta property="og:description" content="Data-driven cricket analysis, performance insights, head-to-head stats and modern cricket intelligence.">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://prat13k.github.io/analysis-before-wicket/">
-		<meta property="og:image" content="https://prat13k.github.io/analysis-before-wicket/asset/logo.png">
-		<link rel="canonical" href="https://prat13k.github.io/analysis-before-wicket/">
-		<title>Analysis Before Wicket | Advanced Cricket Analytics and Data Driven Insights</title>
-		<link rel = "stylesheet" href = "style/style.css">
-		<link rel="icon" href="asset/logo.png" type="image/png">
-	</head>
-	<body>
-		<header>
-			<div class = "header-left">
-				<h1>Analysis Before Wicket</h1>
-				<h2>Advanced Cricket Analytics and Data Driven Insights</h2>
-				<ul>
-					<li><a href = "index.html">Home</a></li>
-					<li><a href = "archives.html">Archives</a></li>
-				</ul>
-			</div>
-			<img src="asset/logo.png" alt="Analysis Before Wicket logo" class="site-logo"/>
-		</header>
-		<main>
-			<h3>Recent Blogs</h3>
-			<section id = "recent-blogs"></section>
-		</main>
-		<footer>
-			<p>
-				&copy; 2025 Analysis Before Wicket. All right reserved.
-			</p>
-			<p class = "about-us">
-				Analysis Before Cricket is a data driven cricket analysis blogs website, where you find top quality blogs on cricket, performances, stats and data. 
-			</p>
-			<p class = "contact-us">
-				email us: <a href = "mailto:analysisbeforewicket@gmail.com">analysisbeforewicket@gmail.com</a>
-			</p>
-			<p class = "footer-legal">
-				All content on this website is the intellectual property of Analysis Before Wicket unless otherwise stated. Unauthorized reproduction, distribution, or use of this content without prior written permission is prohibited.
-			</p>
-			<script type = "module" src = "js/fetchblogs.js"></script>
-			<script type = "module" src = "js/index.page.js"></script>
-		</footer>
-	</body>
+<html lang="en">
+<head>
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Analysis Before Wicket is a data-driven cricket analytics platform offering deep insights, performance analysis, head-to-head stats, and modern cricket intelligence.">
+    <meta property="og:title" content="Advanced Cricket Analytics | Analysis Before Wicket">
+    <meta property="og:description" content="Data-driven cricket analysis, performance insights, head-to-head stats and modern cricket intelligence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prat13k.github.io/analysis-before-wicket/">
+    <meta property="og:image" content="https://prat13k.github.io/analysis-before-wicket/asset/logo.png">
+    <link rel="canonical" href="https://prat13k.github.io/analysis-before-wicket/">
+    <title>Analysis Before Wicket | Advanced Cricket Analytics and Data Driven Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel = "stylesheet" href = "style/style.css">
+    <title>Analysis Before Wicket</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <h1>Analysis Before Wicket</h1>
+        <p>Advanced Cricket Analytics and Data Driven Insights</p>
+    </header>
+    
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="archives.html">Archives</a></li>
+            <li><a href="abouts.html">About</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+        </ul>
+        <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </nav>
+
+    <!-- BREAKING NEWS TICKER -->
+    <div class="ticker">
+        <span class="ticker-label">Breaking News</span>
+        <div class="ticker-content">Latest cricket analytics updates, match insights, and player performance data...</div>
+    </div>
+
+    <!-- MAIN CONTENT GRID -->
+    <main class="content-grid">
+        <!-- Left Column: Hero / Main News -->
+        <section>
+            <div class="section-title">Main Analysis</div>
+            <article class="hero-card">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1000&auto=format&fit=crop" alt="Cricket Match">
+                <div class="hero-overlay">
+                    <span class="category-tag">Match Report</span>
+                    <h2 class="hero-title">The Rise of Data Analytics in Modern Cricket Strategy</h2>
+                    <div class="card-meta">
+                        <span>By Admin</span>
+                        <span>May 7, 2023</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Right Column: Editor Picks -->
+        <section>
+            <div class="section-title">Editor Pick</div>
+            <div class="editor-picks-grid">
+                <article class="pick-card">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=400&auto=format&fit=crop" alt="Batting">
+                    <div class="pick-content">
+                        <span class="category-tag">Batting</span>
+                        <h4>Analyzing Strike Rates in Powerplays</h4>
+                        <div class="card-meta"><span>May 7, 2023</span></div>
+                    </div>
+                </article>
+                <article class="pick-card">
+                    <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=400&auto=format&fit=crop" alt="Bowling">
+                    <div class="pick-content">
+                        <span class="category-tag">Bowling</span>
+                        <h4>Economy Rates in Death Overs</h4>
+                        <div class="card-meta"><span>May 7, 2023</span></div>
+                    </div>
+                </article>
+                <article class="pick-card">
+                    <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?q=80&w=400&auto=format&fit=crop" alt="Fielding">
+                    <div class="pick-content">
+                        <span class="category-tag">Fielding</span>
+                        <h4>Impact of Run Outs on Match Outcomes</h4>
+                        <div class="card-meta"><span>May 7, 2023</span></div>
+                    </div>
+                </article>
+                <article class="pick-card">
+                    <img src="https://images.unsplash.com/photo-1607734834519-d8576ae58ef6?q=80&w=400&auto=format&fit=crop" alt="Strategy">
+                    <div class="pick-content">
+                        <span class="category-tag">Strategy</span>
+                        <h4>Dew Factor and Second Innings Advantage</h4>
+                        <div class="card-meta"><span>May 7, 2023</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- BOTTOM GRID -->
+    <div class="bottom-grid">
+        <section>
+            <div class="section-title">Latest Posts</div>
+            <!-- LEAVE THIS EMPTY. Your JS will inject the horizontal cards here. -->
+            <div id="recent-blogs">
+                <!-- JS will inject <article class="horizontal-card"> elements here -->
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Latest Headlines</div>
+            <ul class="headlines-list">
+                <li><a href="#">Virat Kohli's Strike Rate Evolution: A Deep Dive</a></li>
+                <li><a href="#">How Powerplays Are Won and Lost in ODI Cricket</a></li>
+                <li><a href="#">The Impact of T20 Leagues on International Workload</a></li>
+                <li><a href="#">Analyzing the Best Death Bowlers of the Decade</a></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Analysis Before Wicket. All rights reserved.</p>
+        <p class="about-us">Analysis Before Cricket is a data driven cricket analysis blogs website, where you find top quality blogs on cricket, performances, stats and data.</p>
+        <p class="contact-us">email us: <a href="mailto:analysisbeforewicket@gmail.com">analysisbeforewicket@gmail.com</a></p>
+        <p class="footer-legal">All content on this website is the intellectual property of Analysis Before Wicket unless otherwise stated. Unauthorized reproduction, distribution, or use of this content without prior written permission is prohibited.</p>
+    </footer>
+
+    <script type="module" src="js/fetchblogs.js"></script>
+    <script type="module" src="js/index.page.js"></script>
+</body>
 </html>
+
