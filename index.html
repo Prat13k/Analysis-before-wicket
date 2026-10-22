@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset = "utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#121212">
+
+    <title>Analysis Before Wicket | Advanced Cricket Analytics and Data Driven Insights</title>
+
     <meta name="description" content="Analysis Before Wicket is a data-driven cricket analytics platform offering deep insights, performance analysis, head-to-head stats, and modern cricket intelligence.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://prat13k.github.io/Analysis-before-wicket/">
+
     <meta property="og:title" content="Advanced Cricket Analytics | Analysis Before Wicket">
     <meta property="og:description" content="Data-driven cricket analysis, performance insights, head-to-head stats and modern cricket intelligence.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://prat13k.github.io/analysis-before-wicket/">
-    <meta property="og:image" content="https://prat13k.github.io/analysis-before-wicket/asset/logo.png">
-    <link rel="canonical" href="https://prat13k.github.io/analysis-before-wicket/">
-    <title>Analysis Before Wicket | Advanced Cricket Analytics and Data Driven Insights</title>
+    <meta property="og:url" content="https://prat13k.github.io/Analysis-before-wicket/">
+    <meta property="og:image" content="https://prat13k.github.io/Analysis-before-wicket/asset/logo.png">
+
+    <!-- Fonts (match the families actually used in style.css) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel = "stylesheet" href = "style/style.css">
-    <title>Analysis Before Wicket</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Site CSS (last so it can override) -->
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <!-- TOP BAR -->
     <div class="top-bar">
         <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
         </div>
     </div>
 
@@ -33,22 +44,22 @@
         <h1>Analysis Before Wicket</h1>
         <p>Advanced Cricket Analytics and Data Driven Insights</p>
     </header>
-    
+
     <!-- NAVIGATION -->
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Primary">
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="archives.html">Archives</a></li>
             <li><a href="abouts.html">About</a></li>
             <li><a href="contactus.html">Contact</a></li>
         </ul>
-        <div class="search-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+        <button type="button" class="search-icon" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
     </nav>
 
     <!-- BREAKING NEWS TICKER -->
-    <div class="ticker">
+    <div class="ticker" aria-label="Breaking news">
         <span class="ticker-label">Breaking News</span>
         <div class="ticker-content">Latest cricket analytics updates, match insights, and player performance data...</div>
     </div>
@@ -57,12 +68,12 @@
     <main class="content-grid">
         <!-- Left Column: Hero / Main News -->
         <section>
-            <div class="section-title">Main Analysis</div>
+            <h2 class="section-title">Main Analysis</h2>
             <article class="hero-card">
-                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1000&auto=format&fit=crop" alt="Cricket Match">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1000&auto=format&fit=crop" alt="Cricket match in progress">
                 <div class="hero-overlay">
                     <span class="category-tag">Match Report</span>
-                    <h2 class="hero-title">The Rise of Data Analytics in Modern Cricket Strategy</h2>
+                    <h3 class="hero-title">The Rise of Data Analytics in Modern Cricket Strategy</h3>
                     <div class="card-meta">
                         <span>By Admin</span>
                         <span>May 7, 2023</span>
@@ -73,37 +84,37 @@
 
         <!-- Right Column: Editor Picks -->
         <section>
-            <div class="section-title">Editor Pick</div>
+            <h2 class="section-title">Editor Pick</h2>
             <div class="editor-picks-grid">
                 <article class="pick-card">
-                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=400&auto=format&fit=crop" alt="Batting">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=400&auto=format&fit=crop" alt="Batsman playing a shot">
                     <div class="pick-content">
                         <span class="category-tag">Batting</span>
-                        <h4>Analyzing Strike Rates in Powerplays</h4>
+                        <h3>Analyzing Strike Rates in Powerplays</h3>
                         <div class="card-meta"><span>May 7, 2023</span></div>
                     </div>
                 </article>
                 <article class="pick-card">
-                    <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=400&auto=format&fit=crop" alt="Bowling">
+                    <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=400&auto=format&fit=crop" alt="Bowler in delivery stride">
                     <div class="pick-content">
                         <span class="category-tag">Bowling</span>
-                        <h4>Economy Rates in Death Overs</h4>
+                        <h3>Economy Rates in Death Overs</h3>
                         <div class="card-meta"><span>May 7, 2023</span></div>
                     </div>
                 </article>
                 <article class="pick-card">
-                    <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?q=80&w=400&auto=format&fit=crop" alt="Fielding">
+                    <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?q=80&w=400&auto=format&fit=crop" alt="Fielder taking a catch">
                     <div class="pick-content">
                         <span class="category-tag">Fielding</span>
-                        <h4>Impact of Run Outs on Match Outcomes</h4>
+                        <h3>Impact of Run Outs on Match Outcomes</h3>
                         <div class="card-meta"><span>May 7, 2023</span></div>
                     </div>
                 </article>
                 <article class="pick-card">
-                    <img src="https://images.unsplash.com/photo-1607734834519-d8576ae58ef6?q=80&w=400&auto=format&fit=crop" alt="Strategy">
+                    <img src="https://images.unsplash.com/photo-1607734834519-d8576ae58ef6?q=80&w=400&auto=format&fit=crop" alt="Cricket team strategy huddle">
                     <div class="pick-content">
                         <span class="category-tag">Strategy</span>
-                        <h4>Dew Factor and Second Innings Advantage</h4>
+                        <h3>Dew Factor and Second Innings Advantage</h3>
                         <div class="card-meta"><span>May 7, 2023</span></div>
                     </div>
                 </article>
@@ -114,15 +125,15 @@
     <!-- BOTTOM GRID -->
     <div class="bottom-grid">
         <section>
-            <div class="section-title">Latest Posts</div>
-            <!-- LEAVE THIS EMPTY. Your JS will inject the horizontal cards here. -->
+            <h2 class="section-title">Latest Posts</h2>
+            <!-- Leave empty — JS injects horizontal cards here -->
             <div id="recent-blogs">
                 <!-- JS will inject <article class="horizontal-card"> elements here -->
             </div>
         </section>
 
         <section>
-            <div class="section-title">Latest Headlines</div>
+            <h2 class="section-title">Latest Headlines</h2>
             <ul class="headlines-list">
                 <li><a href="#">Virat Kohli's Strike Rate Evolution: A Deep Dive</a></li>
                 <li><a href="#">How Powerplays Are Won and Lost in ODI Cricket</a></li>
