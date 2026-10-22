@@ -1,10 +1,16 @@
 import { fetchblogs } from "./fetchblogs.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const container = document.getElementById("recent-blogs");
-
+(async () => {
   try {
-    const blogs = await fetchblogs(); // default: all blogs
+    const container = document.getElementById("all-blogs");
+
+    if (!container) {
+      console.debug("archive.page.js loaded on a non-archive page - skipping.");
+      return;
+    }
+
+    const blogs = await fetchblogs();
+    blogs.sort((a, b) => b.id - a.id);
 
     if (!Array.isArray(blogs) || blogs.length === 0) {
       container.innerHTML = "<p>No blogs available.</p>";
@@ -12,22 +18,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     container.innerHTML = blogs
-      .map(
-        blog => `
-          <a href="blog.html?slug=${blog.slug}" class="blog-link">    
+      .map(blog => {
+        const date = blog.date
+          ? new Date(blog.date).toDateString()
+          : "Unknown date";
+        return `
+          <a href="blog.html?slug=${blog.slug || 'unknown'}" class="blog-link">
             <article class="blog-card">
-              <h2>${blog.title}</h2>
-              <p>${blog.content.substring(0, 0)}...</p>
-              <time datetime="${blog.created_at}">
-                ${new Date(blog.created_at).toDateString()}
-              </time>
+              <h2>${blog.title || "Untitled"}</h2>
+              <small>${date}</small>
             </article>
-          </a>`
-      )
+          </a>
+        `;
+      })
       .join("");
 
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = "<p>Failed to load blogs.</p>";
+  } catch (error) {
+    console.error("Error loading archive:", error);
+    const container = document.getElementById("all-blogs");
+    if (container) {
+      container.innerHTML = "<p>Failed to load blogs. Please try again later.</p>";
+    }
   }
-});
+})();
