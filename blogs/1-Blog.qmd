@@ -1,0 +1,191 @@
+```markdown
+---
+title: "The T20 Impact Index: Separating the Anchors from the Enforcers"
+subtitle: "A Data Autopsy using R to settle the GOAT debate"
+author: "Pratik Patil | Analysis Before Wicket"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    code-fold: true
+    theme: cosmo
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+## Introduction
+
+Who is the greatest T20 batter of all time? Fans argue with their hearts, often pointing to raw run totals or highlight-reel sixes. But as data scientists, we wanted to settle the debate mathematically.
+
+To find the true GOAT, we created a **Composite Impact Score**. This formula is designed to penalize slow, outdated anchors and reckless sloggers, rewarding only those who maximize both consistency and aggression.
+
+$$
+\text{Impact Score} = \frac{\text{Batting Average} \times \text{Strike Rate}}{100}
+$$
+
+To ensure the data isn't skewed by weak opposition, we filtered out Associate Nations and only analyzed players from Full Member Test-playing countries with at least 50 T20I innings.
+
+## Fetching & Cleaning the Data
+
+Let's pull the career T20I batting data using the `cricketdata` package.
+
+```{r}
+#| label: data-cleaning
+#| fig-cap: "Data Cleaning Process"
+
+library(cricketdata)
+library(tidyverse)
+library(ggplot2)
+
+T20_data <- fetch_cricinfo(matchtype = "t20", sex = "men", activity = "batting", type = "career")
+
+# Define Full Member Nations to exclude Associate teams
+full_nations <- c("India", "Australia", "England", "Pakistan", "South Africa", 
+                  "New Zealand", "Sri Lanka", "West Indies", "Bangladesh", 
+                  "Afghanistan", "Zimbabwe", "Ireland")
+
+clean_data <- T20_data %>%
+  filter(Country %in% full_nations, Innings >= 50) %>%
+  mutate(
+    Fours = coalesce(Fours, 0),
+    Sixes = coalesce(Sixes, 0),
+    NotOuts = coalesce(NotOuts, 0),
+    
+    
+    # Boundary Metrics
+    Boundary_Runs = (Fours * 4) + (Sixes * 6),
+    Boundary_Pct = (Boundary_Runs / Runs) * 100,
+    
+    # The Impact Score
+    Impact_Score = (Ave * SR_Calc) / 100,
+    
+    # Finishing Ability (Not Outs)
+    NotOut_Pct = (NotOuts / Innings) * 100
+  ) %>%
+  # Remove anomalies where boundary runs exceed total runs
+  filter(Boundary_Pct <= 100) 
+```
+
+## 1. The Ultimate Impact Index
+
+Let's look at the top 15 players by Impact Score. The color of the bar represents their **Finishing Ability** (percentage of innings they finished Not Out).
+
+```{r}
+#| label: fig-impact-index
+#| fig-cap: "Top 15 T20I Batsmen by Impact Score"
+#| fig-height: 6
+#| fig-width: 10
+
+top_15 <- clean_data %>% 
+  arrange(desc(Impact_Score)) %>% 
+  head(15)
+
+ggplot(top_15, aes(x = reorder(Player, Impact_Score), y = Impact_Score)) +
+  geom_col(aes(fill = NotOut_Pct), width = 0.7) + 
+  coord_flip() +
+  geom_text(aes(label = round(Impact_Score, 2)), hjust = -0.2, size = 4, fontface = "bold") +
+  scale_fill_gradient(low = "#FFD699", high = "#FF9933", name = "Finishing\nAbility (Not Out %)") +
+  labs(
+    title = "The Ultimate T20I Impact Index (Top 15)",
+    subtitle = "Impact = (Batting Average * StrikeRate) / 100",
+    x = "", y = "Impact Score"
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.text.y = element_text(face = "bold", size = 12),
+    panel.grid.major.y = element_blank()
+  )
+```
+
+**The Verdict:** The undisputed mathematical champion is **[Insert #1 Player from Chart]**. But notice the stark difference in style: while some players achieve this score through explosive boundary hitting, others (the lighter-colored bars) do it by remaining unbeaten and rotating the strike.
+
+## 2. The Anatomy of a T20 Batsman
+
+To understand *how* players achieve their impact scores, we must look at the relationship between **Average** (Consistency) and **Strike Rate** (Aggression). The size of the dot represents total runs, and the color represents Boundary Dependency.
+
+```{r}
+#| label: fig-anatomy
+#| fig-cap: "Average vs Strike Rate Scatter Plot"
+#| fig-height: 7
+#| fig-width: 10
+
+ggplot(clean_data, aes(x = Ave, y = SR_Calc)) +
+  geom_point(aes(size = Runs, color = Boundary_Pct), alpha = 0.7) +
+  geom_text(aes(label = ifelse(Impact_Score > 55, Player, "")), vjust = -1.2, size = 3.5, fontface = "bold", check_overlap = TRUE) +
+  scale_color_gradient(low = "#5da9ff", high = "#FF9933", name = "Boundary\nDependency (%)") +
+  scale_size_continuous(range = c(2, 8), guide = "none") +
+  labs(
+    title = "The Anatomy of a T20 Batsman",
+    subtitle = "Average vs Strike Rate (Min. 50 Innings)",
+    x = "Batting Average (Consistency)",
+    y = "Strike Rate (Aggression)"
+  ) +
+  theme_minimal()
+```
+
+**Analysis:** Players in the top-right are the "Elite Enforcers"—they maintain a high average *and* a high strike rate. Players in the top-left are the "Elite Anchors"—they score incredibly consistently, but at a slightly lower tempo.
+
+## 3. The Elite Quadrant
+
+Let's isolate the Top 40 players and map their Impact Score directly against their Boundary Dependency.
+
+```{r}
+#| label: fig-quadrant
+#| fig-cap: "The Elite Quadrant"
+#| fig-height: 7
+#| fig-width: 9
+
+top_40 <- clean_data %>% arrange(desc(Impact_Score)) %>% head(40)
+
+ggplot(top_40, aes(x = Boundary_Pct, y = Impact_Score)) +
+  geom_point(color = "#FF9933", size = 4, alpha = 0.8) +
+  geom_text(aes(label = Player), vjust = -1, size = 3.5, fontface = "bold", check_overlap = TRUE) +
+  geom_vline(xintercept = mean(top_40$Boundary_Pct), linetype = "dashed", color = "gray50") +
+  geom_hline(yintercept = mean(top_40$Impact_Score), linetype = "dashed", color = "gray50") +
+  labs(
+    title = "The Elite Quadrant",
+    subtitle = "Top Right: Elite Enforcers | Top Left: Elite Anchors",
+    x = "Boundary Dependency (% of runs from 4s & 6s)",
+    y = "Composite Impact Score"
+  ) +
+  theme_minimal()
+```
+
+**The Takeaway:** The true GOATs reside in the top-right quadrant. They are the players who have found the perfect balance between hitting boundaries and rotating strike, allowing them to maintain an elite impact score without relying entirely on risky big hitting.
+
+## 4. The Pure Enforcers
+
+Finally, let's isolate the players who score the highest percentage of their runs purely through 4s and 6s.
+
+```{r}
+#| label: fig-boundary
+#| fig-cap: "Most Boundary-Dependent Batsmen"
+#| fig-height: 6
+#| fig-width: 9
+
+top_boundary <- clean_data %>% arrange(desc(Boundary_Pct)) %>% head(10)
+
+ggplot(top_boundary, aes(x = reorder(Player, Boundary_Pct), y = Boundary_Pct)) +
+  geom_col(fill = "#2a4d8d", width = 0.6) +
+  coord_flip() +
+  geom_text(aes(label = paste0(round(Boundary_Pct, 1), "%")), hjust = -0.2, size = 4, fontface = "bold") +
+  labs(
+    title = "Top 10 Most Boundary-Dependent Batsmen",
+    x = "", y = "Boundary Dependency (%)"
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
+  theme_minimal()
+```
+
+## Conclusion
+
+The data proves that the T20 GOAT debate is a fork in the road. If you value pure consistency and finishing games, the data points to the elite anchors like **[Insert Player]**. However, modern cricket is shifting towards the explosive enforcers like **[Insert Player]**, who dominate the boundary dependency charts while maintaining elite impact scores.
+
+One thing is certain: if you can't balance your Average and Strike Rate, you won't survive at the top of the Impact Index.
+```
