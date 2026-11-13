@@ -1,46 +1,44 @@
+// js/index.page.js
 import { fetchblogs } from "./fetchblogs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const container = document.getElementById("recent-blogs");
+    if (!container) return;
+
     try {
-        const latestblogs = await fetchblogs();  // Limit to top 6 blogs
-        latestblogs.sort((a, b) => b.id - a.id); //this is for sorting newly added.
-        
-        const blogs = latestblogs.slice(0, 6);
-        
-        const container = document.getElementById("recent-blogs");
+        const blogs = await fetchblogs({ limit: 6, order: "desc" });
 
         if (!blogs || blogs.length === 0) {
             container.innerHTML = "<p>No blogs found.</p>";
             return;
         }
 
-        container.innerHTML = blogs
-            .map(
-                blog => {
-                    const preview = stripHTML(blog.content || "").slice(0,0) || "No preview available";
-                    const date = blog.date ? new Date(blog.date).toDateString() : "Unknown date";
-                    return `
-                    <a href="blog.html?slug=${blog.slug || 'unknown'}" class="blog-link">
-                        <article class="blog-card">
-                            <h2>${blog.title || "Untitled"}</h2>
-                            <p>${preview}...</p>
-                            <small>${date}</small>
-                        </article>
-                    </a>`;
-                }
-            )
-            .join("");
+        container.innerHTML = blogs.map(renderHorizontalCard).join("");
     } catch (err) {
         console.error(err);
-        document.getElementById("recent-blogs").innerHTML =
-            "<p>Failed to load blogs.</p>";
+        container.innerHTML = "<p>Failed to load blogs.</p>";
     }
 });
 
-// Utility: remove HTML tags for preview text
-function stripHTML(html) {
-  if (!html) return "";
-  const div = document.createElement("div");
-  div.innerHTML = html;
-  return div.textContent || div.innerText || "";
+// ---------- Shared helpers ----------
+export function renderHorizontalCard(blog) {
+    const preview = stripHTML(blog.content || "").slice(0, 150).trim();
+    const date = blog.date ? new Date(blog.date).toDateString() : "Unknown date";
+    const slug = blog.slug || "unknown";
+
+    return `
+        <a href="blog.html?slug=${encodeURIComponent(slug)}" class="blog-link">
+            <article class="blog-card">
+                <h2>${blog.title || "Untitled"}</h2>
+                <p>${preview ? preview + "…" : "No preview available"}</p>
+                <small>${date}</small>
+            </article>
+        </a>`;
+}
+
+export function stripHTML(html) {
+    if (!html) return "";
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
 }
