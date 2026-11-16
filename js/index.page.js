@@ -25,9 +25,9 @@ export function renderHorizontalCard(blog) {
     const preview = stripHTML(blog.content || "").slice(0, 150).trim();
     const date = blog.date ? new Date(blog.date).toDateString() : "Unknown date";
 
-    const href = blog.url
-        || blog.file
-        || `blog.html?slug=${encodeURIComponent(blog.slug || "")}`;
+    // FIX: Agar manifest mein url/file nahi hai, toh seedha blogs/ folder mein jayega
+    const slug = blog.slug || "1-blog";
+    const href = blog.url || blog.file || `blogs/${slug}.html`;
 
     return `
         <a href="${href}" class="blog-link">
