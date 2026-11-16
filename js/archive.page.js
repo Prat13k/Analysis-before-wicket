@@ -35,8 +35,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 function renderCard(blog) {
     const preview = stripHTML(blog.content || "").slice(0, 150).trim();
     const date = blog.date ? new Date(blog.date).toDateString() : "Unknown date";
-    const slug = blog.slug || "unknown";
-    const href = blog.url || `blog.html?slug=${encodeURIComponent(slug)}`;
+
+    // ✅ Priority: url → file → slug fallback
+    const href = blog.url
+        || blog.file
+        || `blog.html?slug=${encodeURIComponent(blog.slug || "")}`;
 
     return `
         <a href="${href}" class="blog-link">
@@ -47,7 +50,6 @@ function renderCard(blog) {
             </article>
         </a>`;
 }
-
 function stripHTML(html) {
     if (!html) return "";
     const div = document.createElement("div");
