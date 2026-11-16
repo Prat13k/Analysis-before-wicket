@@ -1,9 +1,12 @@
 [
   {
     "id": 1,
-    "slug": "first-post",
-    "title": "Your First Blog Post",
-    "date": "2026-05-28",
-    "file": "blogs/first-post.html"
+    "slug": "the-t20-impact-index",
+    "title": "The T20 Impact Index: Separating the Anchors from the Enforcers",
+    "date": "2026-10-29",
+    "author": "Pratik",
+    "content": "A data-driven framework to classify T20 batters by impact rather than average.",
+    "file": "1-blog.html",
+    "url": "1-blog.html"
   }
 ]
