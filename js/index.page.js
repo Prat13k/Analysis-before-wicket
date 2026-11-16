@@ -24,10 +24,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 export function renderHorizontalCard(blog) {
     const preview = stripHTML(blog.content || "").slice(0, 150).trim();
     const date = blog.date ? new Date(blog.date).toDateString() : "Unknown date";
-    const slug = blog.slug || "unknown";
+
+    // ✅ Use blog.url if present, otherwise blog.file, otherwise slug fallback
+    const href = blog.url
+        || blog.file
+        || `blog.html?slug=${encodeURIComponent(blog.slug || "")}`;
 
     return `
-        <a href="blog.html?slug=${encodeURIComponent(slug)}" class="blog-link">
+        <a href="${href}" class="blog-link">
             <article class="blog-card">
                 <h2>${blog.title || "Untitled"}</h2>
                 <p>${preview ? preview + "…" : "No preview available"}</p>
